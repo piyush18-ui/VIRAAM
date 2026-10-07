@@ -1,0 +1,12 @@
+{
+  "name": "viraam",
+  "version": "1.0.0",
+  "description": "Pause the panic. Protect the payment. Stops digital arrest scams and traces mule money flows.",
+  "scripts": {
+    "dev:backend": "powershell -Command \"$env:PYTHONPATH='backend'; .venv\\Scripts\\python -m uvicorn app.main:app --reload --port 8000\"",
+    "dev:frontend": "npm run --prefix frontend dev",
+    "build:frontend": "npm run --prefix frontend build",
+    "test": "powershell -Command \".venv\\Scripts\\pytest -v\"",
+    "dev": "powershell -Command \"Start-Process powershell -ArgumentList '-NoExit', '-Command', '$env:PYTHONPATH=\\\"backend\\\"; .venv\\Scripts\\python -m uvicorn app.main:app --reload --port 8000'; npm run --prefix frontend dev\""
+  }
+}

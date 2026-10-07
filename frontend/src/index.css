@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0A0B0F;
+  --surface: #11131A;
+  --elevated: #161923;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --foreground: #E8EAF0;
+  --muted: #8B90A0;
+  --accent-amber: #F5B84B;
+  --accent-safe: #3DD6C3;
+  --accent-danger: #FF5C6C;
+  --accent-info: #7C9CFF;
+}
+
+.light {
+  --background: #FAF9F6;
+  --surface: #FFFFFF;
+  --elevated: #F2F0EB;
+  --border-color: rgba(20, 22, 28, 0.09);
+  --foreground: #14161C;
+  --muted: #666C7A;
+  --accent-amber: #D9951A;
+  --accent-safe: #1AA897;
+  --accent-danger: #E63946;
+  --accent-info: #4A6FE2;
+}
+
+body {
+  margin: 0;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Restrained Grid background pattern */
+.bg-grid-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.light .bg-grid-pattern {
+  background-image: radial-gradient(rgba(20, 22, 28, 0.06) 1px, transparent 1px);
+}
+
+/* Glassmorphism token */
+.glass-panel {
+  background-color: rgba(17, 19, 26, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+}
+.light .glass-panel {
+  background-color: rgba(255, 255, 255, 0.88);
+  border: 1px solid var(--border-color);
+}
+
+/* Pulse Pause Glow */
+@keyframes amberPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(245, 184, 75, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 14px rgba(245, 184, 75, 0);
+  }
+}
+.pause-pulse-ring {
+  animation: amberPulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
